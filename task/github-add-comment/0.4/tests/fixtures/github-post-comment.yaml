@@ -14,3 +14,19 @@ response:
   status: 200
   content-type: text/json
   file: /fixtures/list-comment-response.json
+---
+headers:
+  method: POST
+  path: /repos/{repo:[^/]+/[^/]+}/commits/{commit_sha:[0-9a-f]+}/comments
+response:
+  status: 200
+  output: '{"status": 200}'
+  content-type: text/json
+---
+headers:
+  method: GET
+  path: /repos/{repo:[^/]+/[^/]+}/commits/{commit_sha:[0-9a-f]+}/comments
+response:
+  status: 200
+  content-type: text/json
+  file: /fixtures/list-commit-comment-response.json

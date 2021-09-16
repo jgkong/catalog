@@ -1,0 +1,35 @@
+---
+apiVersion: tekton.dev/v1beta1
+kind: Pipeline
+metadata:
+  name: github-add-comment-on-commit-test
+spec:
+  workspaces:
+    - name: comment-file
+      optional: true
+  tasks:
+    - name: add-comment
+      taskRef:
+        name: github-add-comment
+      workspaces:
+        - name: comment-file
+          workspace: comment-file
+      params:
+        - name: GITHUB_HOST_URL
+          value: http://127.0.0.1:8080
+        - name: COMMENT_OR_FILE
+          value: "Hello from TektonCD test"
+        - name: REQUEST_URL
+          value: https://github.com/tektoncd/catalog/commit/a0b65939670bc2c010f4d5d6a0b3e4e4590fb92b
+        - name: REPLACE
+          value: "true"
+        - name: COMMENT_TAG
+          value: TEST_TAG123
+---
+apiVersion: tekton.dev/v1beta1
+kind: PipelineRun
+metadata:
+  name: github-add-comment-on-commit-test-run
+spec:
+  pipelineRef:
+    name: github-add-comment-on-commit-test
