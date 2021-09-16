@@ -1,7 +1,6 @@
-# Add a comment to an issue or a pull request
+# Add a comment to an issue, a pull request or a commit
 
-The `github-add-comment` task let you add a comment to a pull request or an
-issue.
+The `github-add-comment` task let you add a comment to a pull request, an issue or a commit.
 
 ## Changelog
 
@@ -26,14 +25,14 @@ kubectl create secret generic github --from-literal token="MY_TOKEN"
 
 Check [this](https://help.github.com/en/github/authenticating-to-github/creating-a-personal-access-token-for-the-command-line) to get personal access token for `Github`.
 
-See GitHub's documentation on [Understanding scopes for OAuth Apps](https://developer.github.com/apps/building-oauth-apps/understanding-scopes-for-oauth-apps/) to figure out what scopes you need to give to this token to add comment to an issue or a pull request.
+See GitHub's documentation on [Understanding scopes for OAuth Apps](https://developer.github.com/apps/building-oauth-apps/understanding-scopes-for-oauth-apps/) to figure out what scopes you need to give to this token to add comment to an issue, a pull request or a commit.
 
 ## Parameters
 
 - **GITHUB_HOST_URL:**: The GitHub host domain (_default:_ `api.github.com`)
 - **API_PATH_PREFIX:**: The GitHub Enterprise has a prefix for the API path. _e.g:_ `/api/v3`
-- **REQUEST_URL:**: The GitHub pull request or issue url, _e.g:_
-  `https://github.com/tektoncd/catalog/issues/46`
+- **REQUEST_URL:**: The GitHub pull request, issue or commit url, _e.g:_
+  `https://github.com/tektoncd/catalog/issues/46` or `https://github.com/tektoncd/catalog/commit/a0b65939670bc2c010f4d5d6a0b3e4e4590fb92b`
 - **COMMENT_OR_FILE:**: The actual comment to add or the filename inside the
   optional workspace `comment-file` containing comment to post. _e.g:_ `don't forget to eat your vegetables before commiting.` _or_ `input.txt`
 - **COMMENT_TAG:**: An invisible tag to be added into the comment. The tag is
